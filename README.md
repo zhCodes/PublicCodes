@@ -1,2 +1,2 @@
 # PublicCodes
-study
+study by myself
