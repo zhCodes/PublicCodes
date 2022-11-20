@@ -1,6 +1,7 @@
 package com.zh.publiccode.controller;
 
 import com.zh.publiccode.entity.User;
+import com.zh.publiccode.service.TestIocService;
 import com.zh.publiccode.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/test/")
 public class TestController {
+    static ThreadLocal<String> threadLocal=new ThreadLocal<>();
 
     @Resource
     private UserServiceImpl userService;

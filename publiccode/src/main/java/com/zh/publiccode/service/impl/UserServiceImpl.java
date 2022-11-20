@@ -4,12 +4,14 @@ import com.zh.publiccode.common.CommonMethod;
 import com.zh.publiccode.dao.UserMapper;
 import com.zh.publiccode.entity.User;
 import com.zh.publiccode.service.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.data.redis.core.RedisTemplate;
 
 
 import javax.annotation.Resource;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,10 +39,13 @@ public class UserServiceImpl implements UserService {
         Boolean isKey = redisTemplate.hasKey(userId);
         if (isKey){
             User user = redisTemplate.opsForValue().get(userId);
+//            redisTemplate.delete(userId);
+            System.out.println("redis缓存获取user信息，user="+user);
             return user;
         }
         User userById = userMapper.getUserById(id);
-        redisTemplate.opsForValue().set(userId,userById);
+        System.out.println("数据库获取user信息,user="+userById);
+        redisTemplate.opsForValue().set(userId,userById,1, TimeUnit.HOURS);
         return userById;
     }
 
