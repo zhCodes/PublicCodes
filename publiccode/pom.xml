@@ -13,11 +13,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>publicCode</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>war</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <dependencies>
-        <!--   spring + spring mvc一套     -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -28,11 +28,15 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.2.2</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.13</version>
+            <version>1.2.16</version>
         </dependency>
        <dependency>
             <groupId>mysql</groupId>
@@ -76,7 +80,9 @@
         </dependency>
 
     </dependencies>
-
+<build>
+    <finalName>publicCode</finalName>
+</build>
 
 
 </project>

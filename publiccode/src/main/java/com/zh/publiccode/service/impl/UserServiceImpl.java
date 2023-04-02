@@ -5,12 +5,17 @@ import com.zh.publiccode.dao.UserMapper;
 import com.zh.publiccode.entity.User;
 import com.zh.publiccode.service.UserService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.core.ListOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.data.redis.core.RedisTemplate;
 
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -49,6 +54,16 @@ public class UserServiceImpl implements UserService {
         return userById;
     }
 
+    public void a(){
+        ConcurrentHashMap<String,String> hashMap=new ConcurrentHashMap<>();
+
+        hashMap.put("a","a");
+
+        HashMap<String,String>  a=new HashMap<>();
+        a.put("1","1");
+
+
+    }
 
 
 

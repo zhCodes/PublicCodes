@@ -1,10 +1,10 @@
+import java.sql.SQLOutput;
+
 /**
  * @author zhanghuihui
- * @Date ${DATE} ${TIME}
+ * @Date 2022/11/20 19:45
  * @Description
  */
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
-    }
+
 }
