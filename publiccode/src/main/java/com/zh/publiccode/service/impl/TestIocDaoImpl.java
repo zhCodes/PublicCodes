@@ -14,6 +14,7 @@ public class TestIocDaoImpl implements TestIocDao {
 
     @Override
     public void getMsg() {
+
         System.out.println("test getMsg 11111");
     }
 }
