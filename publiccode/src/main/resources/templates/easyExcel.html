@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>excel导入导出</title>
+</head>
+<body>
+<form id="uploadForm" method="post" enctype="multipart/form-data">
+    <label for="file">选择要上传的Excel文件：</label>
+    <input type="file" name="file" id="file" required>
+    <button type="submit">上传</button>
+</form>
+<script>
+    ajax({
+        url: 'easy-excel/import-excel', method: "POST",
+        async: 'false',
+        callback: function (msg) {
+            alert(msg.data)
+        }
+    })
+    function ajax(obj) {
+        var url = obj.url,
+            method = obj.method || 'GET',
+            param = obj.param || '',
+            //async必须是字符串
+            async = obj.async || true,
+            callback = obj.callback || function () {
+            };
+        var xmlHttp = getRequest();
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                if (xmlHttp.responseXML) {
+                    callback(xmlHttp.responseXML);
+                    return;
+                }
+                callback(JSON.parse(xmlHttp.responseText));
+            }
+        }
+
+        xmlHttp.open(method, url, eval(async));
+        if (method === 'POST') {
+            xmlHttp.setRequestHeader("content-type", "application/x-www-form-urlencoded")
+        }
+        xmlHttp.send(param);
+    }
+    function getRequest(){
+        var xmlHttp;
+        if(window.XMLHttpRequest){
+            xmlHttp = new XMLHttpRequest();
+        }else{
+            xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+        return xmlHttp;
+    }
+</script>
+
+</body>
+</html>
