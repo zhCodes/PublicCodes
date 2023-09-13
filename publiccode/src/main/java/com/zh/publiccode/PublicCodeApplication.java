@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan(basePackages = "com.zh.publiccode.dao")
 @EnableSwagger2
 public class PublicCodeApplication extends SpringBootServletInitializer {
+    // http://127.0.0.1:8091/swagger-ui.html
 
     public static void main(String[] args) {
         SpringApplication.run(PublicCodeApplication.class, args);

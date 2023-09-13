@@ -3,6 +3,7 @@ package com.zh.publiccode.controller;
 import com.zh.publiccode.config.Response;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,8 +21,8 @@ import java.io.IOException;
 @CrossOrigin
 public class UploadFileController {
 
-
-    private String uploadPath = "E:/upload/test/";
+    @Value("${uploadPath}")
+    private String uploadPath;
 
     @PostMapping(value = "/uploadFiles", name = "上传文件夹")
     @ApiOperation(value = "上传文件夹")
@@ -30,6 +31,7 @@ public class UploadFileController {
         try {
             for (MultipartFile multipartFile : file) {
                 String filename = multipartFile.getOriginalFilename();
+                System.out.println("uploadPath:"+uploadPath);
                 System.out.printf(filename);
                 String dirPath = filename.substring(0, filename.lastIndexOf("/"));
                 File fileDir = new File(uploadPath + dirPath);

@@ -11,11 +11,10 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  * @Description 反射注入
  */
 public class TestApplicationContext {
-
     public static void main(String[] args) {
-       new ClassPathXmlApplicationContext();
-        ApplicationContext context=new FileSystemXmlApplicationContext("E:/codes\\PublicCodes\\publiccode\\src\\main\\resources\\applicationContext.xml");
-        Animal cat=(Animal) context.getBean("Cat");
+        new ClassPathXmlApplicationContext();
+        ApplicationContext context = new FileSystemXmlApplicationContext("E:/codes\\PublicCodes\\publiccode\\src\\main\\resources\\applicationContext.xml");
+        Animal cat = (Animal) context.getBean("Cat");
         cat.eat();
     }
 
