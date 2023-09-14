@@ -5,6 +5,7 @@ import us.codecraft.webmagic.ResultItems;
 import us.codecraft.webmagic.Task;
 import us.codecraft.webmagic.pipeline.Pipeline;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,12 +19,15 @@ public class MyPipeline implements Pipeline {
     @Override
     public void process(ResultItems resultItems, Task task) {
         // TODO 入库
-        String title = resultItems.get("title").toString();
+        // String title = resultItems.get("title").toString();
         // System.out.println(title);
         List<String> contents = resultItems.get("contents");
 
         for (String content : contents) {
-            System.out.println(content);
+            String[] s = content.split(" ");
+            List<String> list = Arrays.asList(s);
+            System.out.println(list.toString());
+
         }
 
     }

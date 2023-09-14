@@ -17,7 +17,16 @@ uploadPath: E:/upload/test/
 mybatis:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.zh.publiccode.entity
-
+#mybatis-plus
+mybatis-plus:
+  ## 这个可以不用配置，因其默认就是这个路径
+#  mapper-locations: classpath:/mapper/*Mapper.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.holmium.springboot.repository.*.entity
+  # 原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
   redis:
     host: 127.0.0.1
     port: 6379

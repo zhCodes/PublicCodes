@@ -24,12 +24,12 @@ public class MyProcessor implements PageProcessor {
     public void process(Page page) {
 
         String pageHtml = page.getHtml().get();
-        // System.out.println(pageHtml);
+        System.out.println(pageHtml);
         Document pageHtmlDoc = Jsoup.parse(pageHtml);
         ArrayList<Object> connectionList = Lists.newArrayList();
-        Elements title = pageHtmlDoc.select("title");
+        // Elements title = pageHtmlDoc.select("title");
         // System.out.println("title: "+title.text());
-        page.putField("title",title.text());
+        // page.putField("title",title.text());
 
         Elements select = pageHtmlDoc.select("tbody").select("tr");
         for (Element element : select) {
