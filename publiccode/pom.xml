@@ -13,10 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>publicCode</name>
     <description>Demo project for Spring Boot</description>
-<!--    <packaging>war</packaging>-->
+    <!--    <packaging>war</packaging>-->
     <properties>
         <java.version>1.8</java.version>
+        <geotools.version>30-SNAPSHOT</geotools.version>
+
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -44,7 +47,7 @@
             <artifactId>druid</artifactId>
             <version>1.2.16</version>
         </dependency>
-       <dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
@@ -83,23 +86,90 @@
             <artifactId>easyexcel</artifactId>
             <version>2.2.6</version>
         </dependency>
-
-
-
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-pool2</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency>
+        <!--web magic-->
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-core</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>us.codecraft</groupId>
+            <artifactId>webmagic-extension</artifactId>
+            <version>0.8.0</version>
+        </dependency>
+        <!--WebMagic对布隆过滤器的支持-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>16.0</version>
+        </dependency>
+        <!--        <dependency>-->
+<!--            <groupId>org.geotools</groupId>-->
+<!--            <artifactId>gt-shapefile</artifactId>-->
+<!--            <version>${geotools.version}</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.geotools</groupId>-->
+<!--            <artifactId>gt-swing</artifactId>-->
+<!--            <version>${geotools.version}</version>-->
+<!--        </dependency>-->
 
     </dependencies>
-<build>
-    <finalName>publicCode</finalName>
-</build>
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>osgeo</id>-->
+<!--            <name>OSGeo Release Repository</name>-->
+<!--            <url>https://repo.osgeo.org/repository/release/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>false</enabled>-->
+<!--            </snapshots>-->
+<!--            <releases>-->
+<!--                <enabled>true</enabled>-->
+<!--            </releases>-->
+<!--        </repository>-->
+<!--        <repository>-->
+<!--            <id>osgeo-snapshot</id>-->
+<!--            <name>OSGeo Snapshot Repository</name>-->
+<!--            <url>https://repo.osgeo.org/repository/snapshot/</url>-->
+<!--            <snapshots>-->
+<!--                <enabled>true</enabled>-->
+<!--            </snapshots>-->
+<!--            <releases>-->
+<!--                <enabled>false</enabled>-->
+<!--            </releases>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+    <build>
+        <finalName>publicCode</finalName>
+
+
+        <plugins>
+            <plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+    </build>
 
 
 </project>
