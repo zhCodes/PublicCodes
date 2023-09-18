@@ -1,5 +1,6 @@
 package com.zh.publiccode.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.zh.publiccode.config.Response;
 
 /**
@@ -10,9 +11,17 @@ import com.zh.publiccode.config.Response;
 public interface SpiderProxyIpInfoService {
 
     /**
-     * 爬取可用ip进行入库
+     * 可用ip进行入库
      */
    Object saveIpInfo();
+
+    /**
+     * 获取库中可用ip
+     * @return
+     */
+   Object getPracticableIp();
+
+
 
 
 }

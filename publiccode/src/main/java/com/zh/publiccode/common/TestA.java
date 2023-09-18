@@ -21,6 +21,7 @@ public class TestA {
         for (int i = s.length(); i >0 ; i--) {
             char c = s.charAt(i-1);
             System.out.println(c);
+
         }
     }
 

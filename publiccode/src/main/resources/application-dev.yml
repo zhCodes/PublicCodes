@@ -5,3 +5,10 @@ spring:
     username: root
     password: 1234
     type: com.alibaba.druid.pool.DruidDataSource
+
+
+free-ip-address:
+  https://proxy.ip3366.net/free/?action=china&page=1,
+  https://proxy.ip3366.net/free/?action=china&page=2,
+  https://proxy.ip3366.net/free/?action=china&page=3
+

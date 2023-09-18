@@ -39,7 +39,7 @@ public class IpInfoProcessor implements PageProcessor {
                 Elements IP = element1.select("td[da-title=IP]");
                 String ipText = IP.text();
                 if (StringUtils.isNotEmpty(ipText)){
-                    spiderProxyIpInfo.setIp(ipText);
+                    spiderProxyIpInfo.setHost(ipText);
                 }
                 Elements port = element1.select("td[da-title=PORT]");
                 String portText = port.text();

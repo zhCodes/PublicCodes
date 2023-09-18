@@ -20,7 +20,7 @@ public class SpiderProxyIpInfo {
     @TableId(type = IdType.AUTO)
     private Integer id;
 
-    private String ip;
+    private String host;
 
     private Integer port;
 
