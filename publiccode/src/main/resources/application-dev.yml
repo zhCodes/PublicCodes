@@ -8,7 +8,5 @@ spring:
 
 
 free-ip-address:
-  https://proxy.ip3366.net/free/?action=china&page=1,
-  https://proxy.ip3366.net/free/?action=china&page=2,
-  https://proxy.ip3366.net/free/?action=china&page=3
+  https://proxy.ip3366.net/free/?action=china&page=1,https://proxy.ip3366.net/free/?action=china&page=2,https://proxy.ip3366.net/free/?action=china&page=3
 

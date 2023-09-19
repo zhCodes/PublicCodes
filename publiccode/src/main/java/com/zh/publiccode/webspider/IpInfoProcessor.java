@@ -28,38 +28,52 @@ public class IpInfoProcessor implements PageProcessor {
         Document pageHtmlDoc = Jsoup.parse(pageHtml);
         ArrayList<SpiderProxyIpInfo> connectionList = Lists.newArrayList();
 
-        Elements select = pageHtmlDoc.select("tbody").select("tr");
+        Elements select = pageHtmlDoc.select("tbody");
+        // Elements select = pageHtmlDoc.select("table[class=table table-bordered table-striped]");
 
         for (Element element : select) {
             // System.out.println(element);
             Elements select1 = element.select("tr");
             for (Element element1 : select1) {
                 SpiderProxyIpInfo spiderProxyIpInfo = new SpiderProxyIpInfo();
-
-                Elements IP = element1.select("td[da-title=IP]");
+                Elements IP = element1.select("td[data-title=IP]");
                 String ipText = IP.text();
                 if (StringUtils.isNotEmpty(ipText)){
                     spiderProxyIpInfo.setHost(ipText);
                 }
-                Elements port = element1.select("td[da-title=PORT]");
+                Elements port = element1.select("td[data-title=PORT]");
                 String portText = port.text();
                 if (StringUtils.isNotEmpty(portText)){
                     spiderProxyIpInfo.setPort(Integer.valueOf(portText));
                 }
+
+                Elements typeElement = element1.select("td[data-title=类型]");
+                String type = typeElement.text();
+                if (StringUtils.isNotEmpty(type)){
+                    spiderProxyIpInfo.setType(type);
+                }
+                Elements addressElement = element1.select("td[data-title=位置]");
+                String address = addressElement.text();
+                if (StringUtils.isNotEmpty(address)){
+                    spiderProxyIpInfo.setAddr(address);
+                }
+
+
                 connectionList.add( spiderProxyIpInfo);
 
             }
 
         }
+        System.out.println("爬取到的内容contents: "+connectionList.toString());
         page.putField("contents",connectionList);
     }
 
     @Override
     public Site getSite() {
         return Site.me()
-                .setRetryTimes(0)
-                .setSleepTime(1000)
-                .setTimeOut(5000);
+                .setRetryTimes(2)
+                .setSleepTime(10000)
+                .setTimeOut(10000);
 
     }
 }

@@ -12,5 +12,5 @@ import java.util.List;
 public interface WebSpiderService {
 
     // 爬取可用ip
-    List<SpiderProxyIpInfo> crawlIp(SpiderProxyIpInfo spiderProxyIpInfo);
+    void crawlIp();
 }

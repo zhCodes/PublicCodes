@@ -1,13 +1,14 @@
 package com.zh.publiccode.webspider;
 
-import com.zh.publiccode.testwebspider.MyPipeline;
-import com.zh.publiccode.testwebspider.MyProcessor;
+
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,12 +16,14 @@ import java.util.List;
  * @date 2023/9/18
  * @description 爬取代理ip
  */
+@Component
 public class CrawlIpHandle {
 
-    public void execute(String host,Integer port,List<String> targetIpList) {
+    @Resource
+    private ProxyIpInfoPipeline pipeline;
 
-
-        String[] array = targetIpList.toArray(new String[]{});
+    public void execute(String host,Integer port,List<String> targetIpAddrList) {
+        String[] array = targetIpAddrList.toArray(new String[]{});
 
         if (StringUtils.isNotEmpty(host)&&port!=null){
             HttpClientDownloader httpClientDownloader = new HttpClientDownloader();
@@ -34,7 +37,7 @@ public class CrawlIpHandle {
                     // 指定页面解析器
                     .create(new IpInfoProcessor())
                     // 指定爬取结果的处理器
-                    .addPipeline(new MyPipeline())
+                    .addPipeline(pipeline)
                     .setDownloader(httpClientDownloader)
                     // .setScheduler(new QueueScheduler()
                     //         .setDuplicateRemover(new BloomFilterDuplicateRemover(10000000)))
@@ -49,7 +52,7 @@ public class CrawlIpHandle {
                     // 指定页面解析器
                     .create(new IpInfoProcessor())
                     // 指定爬取结果的处理器
-                    .addPipeline(new MyPipeline())
+                    .addPipeline(pipeline)
                     // .setScheduler(new QueueScheduler()
                     //         .setDuplicateRemover(new BloomFilterDuplicateRemover(10000000)))
                     // 创建3个线程
